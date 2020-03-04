@@ -1,0 +1,72 @@
+{
+  "name": "materia-front",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "build": "next build",
+    "build-storybook": "build-storybook",
+    "dev": "next",
+    "fix": "eslint --ext tsx src/ --fix",
+    "fix:pack": "sort-package-json",
+    "lint": "eslint --ext tsx src/",
+    "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "typecheck": "tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.tsx": [
+      "eslint --fix",
+      "prettier"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "latest",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "ress": "^2.0.4",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-docs": "^5.3.13",
+    "@storybook/addon-knobs": "^5.3.12",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
+    "@storybook/source-loader": "^5.3.13",
+    "@testing-library/react": "^9.4.0",
+    "@types/node": "^13.5.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/styled-components": "^4.4.2",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.2",
+    "prettier": "^1.19.1",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "react-is": "^16.12.0",
+    "sort-package-json": "^1.39.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5"
+  }
+}

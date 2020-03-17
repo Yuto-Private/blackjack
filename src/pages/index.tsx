@@ -1,33 +1,25 @@
-import React, { FC, useReducer, Dispatch } from "react";
+import React, { FC } from "react";
 import Default from "../components/templates/Default";
 import {
-  setDeckInitialize,
-  initialState,
-  reducer,
-  State
-} from "../domain/store/blackjack";
-import getInitialCard from "../domain/logics/cardInitialize"
+  useSelector as useReduxSelector,
+  TypedUseSelectorHook,
+  useDispatch
+} from 'react-redux'
+import { RootState, AppDispatch } from "../domain/stores"
+import userSlice from "../domain/stores/user"
 
-export const Store = React.createContext<{
-  state: State;
-  dispatch: Dispatch<any>;
-}>({
-  state: initialState,
-  dispatch: (value: any) => value
-});
+// TODO 調べる
+const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
 
 const Home: FC = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { setName } = userSlice.actions
+  const name = useSelector(state => state.user.name);
+  const dispatch = useDispatch<AppDispatch>()
 
   return (
-    <Store.Provider value={{ state, dispatch }}>
-      <Default>
-        <p onClick={() => setDeckInitialize()}>blackjack</p>
-        <p onClick={() => {
-          getInitialCard(2)
-        }}>hogehgoe</p>
-      </Default>
-    </Store.Provider>
+    <Default>
+      <p onClick={() => dispatch(setName('fuga'))}>{name}</p>
+    </Default>
   );
 };
 

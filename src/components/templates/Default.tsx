@@ -9,6 +9,7 @@ const Default: React.FC = props => (
 
 const LayoutWrapper = styled.div`
   display: flex;
+  padding: 100px;
 `;
 
 export default Default;

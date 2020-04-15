@@ -6,6 +6,8 @@ import { CardType } from "../domain/const/cardNumbers";
 import { shuffle } from "../domain/logics/shuffle";
 import PlayerPanel from "../components/molecules/PlayerPanel";
 import DealerPanel from "../components/molecules/DealerPanel";
+import { handsValue } from "../domain/logics/handsValue";
+import { isHandStatus } from "../domain/logics/isHandStatus";
 
 const Home: FC = () => {
   const deck = shuffle(getInitialCards());
@@ -17,6 +19,7 @@ const Home: FC = () => {
   return (
     <Default>
       <GameTable>
+        {console.log(handsValue(playerHands))}
         <DealerPanel
           playerHands={playerHands}
           dealerHands={dealerHands}
@@ -37,6 +40,7 @@ const Home: FC = () => {
             setIsPlayerTurn(false);
           }}
         />
+        {isHandStatus(handsValue(playerHands))}
       </GameTable>
     </Default>
   );

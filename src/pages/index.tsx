@@ -12,6 +12,7 @@ const Home: FC = () => {
   const [playerHands, setPlayerHands] = useState<CardType>([deck[0]]);
   const [dealerHands, setDealerHands] = useState<CardType>([]);
   const [hitCount, setHitCount] = useState(1);
+  const [isPlayerTurn, setIsPlayerTurn] = useState(false);
 
   return (
     <Default>
@@ -20,15 +21,20 @@ const Home: FC = () => {
           playerHands={playerHands}
           dealerHands={dealerHands}
           actionDealer={() => {
-            setDealerHands([...dealerHands, deck[hitCount]]);
-            setHitCount(hitCount + 1);
+            setTimeout(() => {
+              setDealerHands([...dealerHands, deck[hitCount]]);
+              setHitCount(hitCount + 1);
+              setIsPlayerTurn(true);
+            }, 500);
           }}
         />
         <PlayerPanel
           playerHands={playerHands}
+          myTurn={isPlayerTurn}
           onClickHit={() => {
             setPlayerHands([...playerHands, deck[hitCount]]);
             setHitCount(hitCount + 1);
+            setIsPlayerTurn(false);
           }}
         />
       </GameTable>

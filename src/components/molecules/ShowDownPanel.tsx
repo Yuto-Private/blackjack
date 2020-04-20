@@ -22,9 +22,9 @@ const ShowDownPanel: FC<Props> = ({ playerHands, dealerHands }) => {
         <ResultItem>Dealer {dealerScore}</ResultItem>
         <ResultItem>{gameResult(playerScore, dealerScore)}</ResultItem>
       </Result>
-      <button type="button" onClick={() => router.reload()}>
+      <Button type="button" onClick={() => router.reload()}>
         one more
-      </button>
+      </Button>
     </Component>
   );
 };
@@ -39,11 +39,19 @@ const Position = styled.p`
 
 const Result = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin: 10px 0;
 `;
 
 const ResultItem = styled.div`
   margin-right: 10px;
+`;
+
+const Button = styled.button`
+  padding: 5px 20px;
+  border: 1px solid #000;
+  &:not(:first-of-type) {
+    margin-left: 5px;
+  }
 `;
 
 export default ShowDownPanel;

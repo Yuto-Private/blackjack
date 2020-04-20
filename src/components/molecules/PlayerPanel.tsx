@@ -18,12 +18,12 @@ const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, onClickStand }) => {
           <Card value={value} />
         ))}
       </Hands>
-      <button type="button" onClick={() => onClickHit()}>
+      <Button type="button" onClick={() => onClickHit()}>
         hit
-      </button>
-      <button type="button" onClick={() => onClickStand()}>
+      </Button>
+      <Button type="button" onClick={() => onClickStand()}>
         stand
-      </button>
+      </Button>
     </Component>
   );
 };
@@ -38,7 +38,15 @@ const Position = styled.p`
 
 const Hands = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin: 10px 0;
+`;
+
+const Button = styled.button`
+  padding: 5px 20px;
+  border: 1px solid #000;
+  &:not(:first-of-type) {
+    margin-left: 5px;
+  }
 `;
 
 export default PlayerPanel;

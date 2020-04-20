@@ -15,35 +15,37 @@ const Home: FC = () => {
   const [playerHands, setPlayerHands] = useState<CardType>([deck[0]]);
   const [dealerHands, setDealerHands] = useState<CardType>([]);
   const [hitCount, setHitCount] = useState(1);
-  const [isPlayerTurn, setIsPlayerTurn] = useState(false);
+  const [isPlayerStand, setIsPlayerStand] = useState(false);
+  const [isDealerStand, setIsDealerStand] = useState(false);
 
   return (
     <Default>
       <GameTable>
-        {console.log(formatHandsValue(playerHands))}
         <DealerPanel
           playerHands={playerHands}
           dealerHands={dealerHands}
-          actionDealer={() => {
-            setTimeout(() => {
-              setDealerHands([...dealerHands, deck[hitCount]]);
-              setHitCount(hitCount + 1);
-              setIsPlayerTurn(true);
-            }, 500);
+          isPlayerStand={isPlayerStand}
+          actionHit={() => {
+            setDealerHands([...dealerHands, deck[hitCount]]);
+            setHitCount(hitCount + 1);
           }}
+          actionStand={() => setIsDealerStand(true)}
         />
+
         <PlayerPanel
           playerHands={playerHands}
-          myTurn={isPlayerTurn}
           onClickHit={() => {
             setPlayerHands([...playerHands, deck[hitCount]]);
             setHitCount(hitCount + 1);
-            setIsPlayerTurn(false);
           }}
+          onClickStand={() => setIsPlayerStand(true)}
         />
+
         {isHandStatus(formatHandsValue(playerHands))}
 
-        <ShowDownPanel playerHands={playerHands} dealerHands={dealerHands} />
+        {isPlayerStand && isDealerStand && (
+          <ShowDownPanel playerHands={playerHands} dealerHands={dealerHands} />
+        )}
       </GameTable>
     </Default>
   );

@@ -2,23 +2,36 @@ import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../atoms/Card";
 import { CardType } from "../../domain/const/cardNumbers";
+import { formatHandsValue } from "../../domain/logics/formatHandsValue";
 
 interface Props {
   playerHands: CardType;
   dealerHands: CardType;
-  actionDealer: () => void;
+  isPlayerStand: boolean;
+  actionHit: () => void;
+  actionStand: () => void;
 }
 
-const DealerPanel: FC<Props> = ({ playerHands, dealerHands, actionDealer }) => {
+const DealerPanel: FC<Props> = props => {
   useEffect(() => {
-    actionDealer();
-  }, [playerHands]);
+    formatHandsValue(props.dealerHands) <= 16
+      ? props.actionHit()
+      : props.actionStand();
+  }, [props.playerHands]);
+
+  useEffect(() => {
+    if (props.isPlayerStand) {
+      formatHandsValue(props.dealerHands) <= 16
+        ? props.actionHit()
+        : props.actionStand();
+    }
+  }, [props.isPlayerStand, props.dealerHands]);
 
   return (
     <Component>
       <Position>Dealer</Position>
       <Hands>
-        {dealerHands.map(value => (
+        {props.dealerHands.map(value => (
           <Card value={value} />
         ))}
       </Hands>

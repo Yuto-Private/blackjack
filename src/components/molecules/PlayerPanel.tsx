@@ -5,11 +5,11 @@ import Card from "../atoms/Card";
 
 interface Props {
   playerHands: CardType;
-  myTurn: boolean;
   onClickHit: () => void;
+  onClickStand: () => void;
 }
 
-const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, myTurn }) => {
+const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, onClickStand }) => {
   return (
     <Component>
       <Position>Player</Position>
@@ -18,11 +18,12 @@ const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, myTurn }) => {
           <Card value={value} />
         ))}
       </Hands>
-      {myTurn && (
-        <button type="button" onClick={() => onClickHit()}>
-          playerHit
-        </button>
-      )}
+      <button type="button" onClick={() => onClickHit()}>
+        hit
+      </button>
+      <button type="button" onClick={() => onClickStand()}>
+        stand
+      </button>
     </Component>
   );
 };

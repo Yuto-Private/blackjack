@@ -5,14 +5,15 @@ import styled from "styled-components";
 
 interface Props {
   value: Array<number>;
+  isHidden?: boolean;
 }
 
-const Card: FC<Props> = ({ value }) => {
+const Card: FC<Props> = ({ value, isHidden }) => {
   const [suit, number] = value;
   return (
     <Component>
-      <Suit>{cardSuitScreen[suit]}</Suit>
-      <Number>{cardNumberScreen[number]}</Number>
+      <Suit>{isHidden ? "?" : cardSuitScreen[suit]}</Suit>
+      <Number>{isHidden ? "?" : cardNumberScreen[number]}</Number>
     </Component>
   );
 };

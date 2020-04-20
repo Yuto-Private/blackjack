@@ -31,8 +31,11 @@ const DealerPanel: FC<Props> = props => {
     <Component>
       <Position>Dealer</Position>
       <Hands>
-        {props.dealerHands.map(value => (
-          <Card value={value} />
+        {props.dealerHands.map((value, index) => (
+          <Card
+            value={value}
+            isHidden={Boolean(index) && !props.isPlayerStand}
+          />
         ))}
       </Hands>
     </Component>

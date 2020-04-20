@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
 import Default from "../components/templates/Default";
-import { getInitialCards } from "../domain/logics/cardInitialize";
+import { getInitialCards } from "../domain/logics/getInitialCards";
 import { CardType } from "../domain/const/cardNumbers";
 import { shuffle } from "../domain/logics/shuffle";
 import PlayerPanel from "../components/molecules/PlayerPanel";

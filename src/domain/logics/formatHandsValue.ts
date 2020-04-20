@@ -10,13 +10,15 @@ const formatFaceCard = (cardValue: number) => {
 };
 
 export const formatHandsValue = (hands: CardType) => {
-  const handsValue = hands.map(hands => hands[CARD_ARRAY_ROLE.NUMBER]);
-  return handsValue.reduce((result, cardValue) => {
-    const formatValue =
-      cardValue === CARD_NUMBERS.ACE
-        ? formatSoftCount(result)
-        : formatFaceCard(cardValue);
-    result += formatValue;
-    return result;
-  }, 0);
+  const handsValue = hands.map(hand => hand[CARD_ARRAY_ROLE.NUMBER]);
+  const handsInAces = handsValue.filter(value => value === CARD_NUMBERS.ACE);
+  const notHandsInAces = handsValue.filter(value => value !== CARD_NUMBERS.ACE);
+  const preHands = notHandsInAces.reduce(
+    (result, cardValue) => (result += formatFaceCard(cardValue)),
+    0
+  );
+  return handsInAces.reduce(
+    result => (result += formatSoftCount(result)),
+    preHands
+  );
 };

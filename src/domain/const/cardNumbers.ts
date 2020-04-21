@@ -14,9 +14,6 @@ export const CARD_NUMBERS = {
   KING: 13
 } as const;
 
-export type CardNumbers = typeof CARD_NUMBERS[keyof typeof CARD_NUMBERS];
-export type CardType = CardNumbers[][];
-
 export const cardNumberScreen: { [key in number]: string } = {
   [CARD_NUMBERS.ACE]: "A",
   [CARD_NUMBERS.TWO]: "2",

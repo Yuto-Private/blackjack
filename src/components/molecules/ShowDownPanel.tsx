@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { CardType } from "../../domain/const/cardNumbers";
 import { useRouter } from "next/router";
 import { formatHandsValue } from "../../domain/logics/formatHandsValue";
 import { gameResult } from "../../domain/logics/gameResult";
+import { CardType } from "../../domain/types/types";
 
 interface Props {
   playerHands: CardType;

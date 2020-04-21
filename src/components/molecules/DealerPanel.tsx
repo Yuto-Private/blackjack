@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Card from "../atoms/Card";
-import { CardType } from "../../domain/const/cardNumbers";
+import { CardType } from "../../domain/types/types";
 import { formatHandsValue } from "../../domain/logics/formatHandsValue";
 
 interface Props {

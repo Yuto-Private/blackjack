@@ -1,5 +1,6 @@
-import { CARD_NUMBERS, CardType } from "../const/cardNumbers";
+import { CARD_NUMBERS } from "../const/cardNumbers";
 import { CARD_ARRAY_ROLE } from "../const/cardArrayRole";
+import { CardType } from "../types/types";
 
 const formatSoftCount = (result: number) => {
   return result <= 10 ? 11 : 1;

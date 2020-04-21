@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { CardType } from "../../domain/const/cardNumbers";
 import Card from "../atoms/Card";
+import { CardType } from "../../domain/types/types";
 
 interface Props {
   playerHands: CardType;

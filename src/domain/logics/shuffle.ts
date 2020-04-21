@@ -1,4 +1,4 @@
-import { CardType } from "../const/cardNumbers";
+import { CardType } from "../types/types";
 
 export const shuffle = (array: CardType) => {
   for (let i = array.length - 1; i >= 0; i--) {

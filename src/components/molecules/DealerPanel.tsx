@@ -14,12 +14,6 @@ interface Props {
 
 const DealerPanel: FC<Props> = props => {
   useEffect(() => {
-    formatHandsValue(props.dealerHands) <= 16
-      ? props.actionHit()
-      : props.actionStand();
-  }, [props.playerHands]);
-
-  useEffect(() => {
     if (props.isPlayerStand) {
       formatHandsValue(props.dealerHands) <= 16
         ? props.actionHit()
@@ -32,7 +26,9 @@ const DealerPanel: FC<Props> = props => {
       <Position>Dealer</Position>
       <Hands>
         {props.dealerHands.map((value, index) => (
+          // TODO: keyにindex以外当てるものがないので一旦仮あて
           <Card
+            key={index}
             value={value}
             isHidden={Boolean(index) && !props.isPlayerStand}
           />

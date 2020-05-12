@@ -14,8 +14,9 @@ const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, onClickStand }) => {
     <Component>
       <Position>Player</Position>
       <Hands>
-        {playerHands.map(value => (
-          <Card value={value} />
+        {playerHands.map((value, index) => (
+          // TODO: keyにindex以外当てるものがないので一旦仮あて
+          <Card key={index} value={value} />
         ))}
       </Hands>
       <Button type="button" onClick={() => onClickHit()}>

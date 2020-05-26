@@ -19,6 +19,7 @@ const PlayerPanel: FC<Props> = ({ playerHands, onClickHit, onClickStand }) => {
           <Card key={index} value={value} />
         ))}
       </Hands>
+      {/* nits: 前も話した通り、ここはonClick={onClickHit}を使ってもいいですよ */}
       <Button type="button" onClick={() => onClickHit()}>
         hit
       </Button>

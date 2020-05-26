@@ -8,14 +8,14 @@ interface Props {
   playerHands: CardType;
   dealerHands: CardType;
   isPlayerStand: boolean;
-  actionHit: () => void;
+  actionHit: () => void; // nits: もし短い単語が好みならhitとstandでも全然オッケーだと思います
   actionStand: () => void;
 }
 
 const DealerPanel: FC<Props> = props => {
   useEffect(() => {
     if (props.isPlayerStand) {
-      formatHandsValue(props.dealerHands) <= 16
+      formatHandsValue(props.dealerHands) <= 16 // nits: ここは再起処理になっている？
         ? props.actionHit()
         : props.actionStand();
     }
@@ -30,7 +30,7 @@ const DealerPanel: FC<Props> = props => {
           <Card
             key={index}
             value={value}
-            isHidden={Boolean(index) && !props.isPlayerStand}
+            isHidden={Boolean(index) && !props.isPlayerStand} // imo: Boolean(index)の部分は別名を付けたほうが良い（パット見何をしているか分からない）
           />
         ))}
       </Hands>

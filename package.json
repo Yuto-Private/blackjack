@@ -20,9 +20,8 @@
     }
   },
   "lint-staged": {
-    "*.tsx": [
-      "eslint --fix",
-      "prettier"
+    "*.{ts,tsx}": [
+      "eslint --fix"
     ],
     "package.json": [
       "sort-package-json"

@@ -6,7 +6,7 @@ import { CardType } from "../domain/types/types";
 import { shuffle } from "../domain/logics/shuffle";
 import PlayerPanel from "../components/molecules/PlayerPanel";
 import DealerPanel from "../components/molecules/DealerPanel";
-import { isHandStatus } from "../domain/logics/isHandStatus";
+import { judgeHandStatus } from "../domain/logics/judgeHandStatus";
 import { formatHandsValue } from "../domain/logics/formatHandsValue";
 import ShowDownPanel from "../components/molecules/ShowDownPanel";
 
@@ -14,8 +14,11 @@ const Home: FC = () => {
   const deck = shuffle(getInitialCards());
   // TODO: マジックナンバーなんとかしたい
   // imo: deck.shift() が使えるかと。そうすればhitCountの管理は不要になる
-  const [playerHands, setPlayerHands] = useState<CardType>([deck[0]]);
-  const [dealerHands, setDealerHands] = useState<CardType>([deck[1], deck[2]]);
+  const [playerHands, setPlayerHands] = useState<Array<CardType>>([deck[0]]);
+  const [dealerHands, setDealerHands] = useState<Array<CardType>>([
+    deck[1],
+    deck[2]
+  ]);
   const [hitCount, setHitCount] = useState(3);
   const [isPlayerStand, setIsPlayerStand] = useState(false);
   const [isDealerStand, setIsDealerStand] = useState(false);
@@ -43,7 +46,7 @@ const Home: FC = () => {
           onClickStand={() => setIsPlayerStand(true)}
         />
 
-        {isHandStatus(formatHandsValue(playerHands))}
+        {judgeHandStatus(formatHandsValue(playerHands))}
 
         {isPlayerStand && isDealerStand && (
           <ShowDownPanel playerHands={playerHands} dealerHands={dealerHands} />

@@ -5,10 +5,10 @@ import { CardType } from "../../domain/types/types";
 import { formatHandsValue } from "../../domain/logics/formatHandsValue";
 
 interface Props {
-  playerHands: CardType;
-  dealerHands: CardType;
+  playerHands: Array<CardType>;
+  dealerHands: Array<CardType>;
   isPlayerStand: boolean;
-  actionHit: () => void; // nits: もし短い単語が好みならhitとstandでも全然オッケーだと思います
+  actionHit: () => void; // nits: hitやstandくらい短くしてしまうと、grepするときにノイズが混じりそうなので、一旦このままでも良いかなと思っておりますが、いかがでしょう？？
   actionStand: () => void;
 }
 
@@ -25,14 +25,16 @@ const DealerPanel: FC<Props> = props => {
     <Component>
       <Position>Dealer</Position>
       <Hands>
-        {props.dealerHands.map((value, index) => (
-          // TODO: keyにindex以外当てるものがないので一旦仮あて
-          <Card
-            key={index}
-            value={value}
-            isHidden={Boolean(index) && !props.isPlayerStand} // imo: Boolean(index)の部分は別名を付けたほうが良い（パット見何をしているか分からない）
-          />
-        ))}
+        {props.dealerHands.map((value, index) => {
+          const isHoleCard = Boolean(index);
+          return (
+            <Card
+              key={index}
+              value={value}
+              isHidden={isHoleCard && !props.isPlayerStand}
+            />
+          );
+        })}
       </Hands>
     </Component>
   );

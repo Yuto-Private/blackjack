@@ -13,6 +13,7 @@ import ShowDownPanel from "../components/molecules/ShowDownPanel";
 const Home: FC = () => {
   const deck = shuffle(getInitialCards());
   // TODO: マジックナンバーなんとかしたい
+  // imo: deck.shift() が使えるかと。そうすればhitCountの管理は不要になる
   const [playerHands, setPlayerHands] = useState<CardType>([deck[0]]);
   const [dealerHands, setDealerHands] = useState<CardType>([deck[1], deck[2]]);
   const [hitCount, setHitCount] = useState(3);

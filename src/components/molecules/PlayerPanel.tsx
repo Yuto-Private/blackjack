@@ -4,7 +4,7 @@ import Card from "../atoms/Card";
 import { CardType } from "../../domain/types/types";
 
 interface Props {
-  playerHands: CardType;
+  playerHands: Array<CardType>;
   onClickHit: () => void;
   onClickStand: () => void;
 }

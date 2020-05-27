@@ -1,10 +1,11 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 import { cardSuitScreen } from "../../domain/const/cardSuits";
 import { cardNumberScreen } from "../../domain/const/cardNumbers";
-import styled from "styled-components"; // nits: 人がやる作業じゃないけど、位置は上のほうが良い
+import { CardNumbers, CardSuits } from "../../domain/types/types";
 
 interface Props {
-  value: Array<number>; // imo: valueの型作ったほうがいい [CardSuits, CardNumbers]
+  value: [CardSuits, CardNumbers];
   isHidden?: boolean;
 }
 

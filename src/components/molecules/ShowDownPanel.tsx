@@ -6,8 +6,8 @@ import { gameResult } from "../../domain/logics/gameResult";
 import { CardType } from "../../domain/types/types";
 
 interface Props {
-  playerHands: CardType;
-  dealerHands: CardType;
+  playerHands: Array<CardType>;
+  dealerHands: Array<CardType>;
 }
 
 const ShowDownPanel: FC<Props> = ({ playerHands, dealerHands }) => {

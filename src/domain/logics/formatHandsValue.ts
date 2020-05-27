@@ -12,7 +12,8 @@ const formatFaceCard = (cardValue: number) => {
   return Math.min(10, cardValue);
 };
 
-export const formatHandsValue = (hands: CardType) => { // imo: やってることはformatではなくcalcのほうが正しそう
+export const formatHandsValue = (hands: Array<CardType>) => {
+  // imo: やってることはformatではなくcalcのほうが正しそう
   const handsValue = hands.map(hand => hand[CARD_ARRAY_ROLE.NUMBER]);
   const handsInAces = handsValue.filter(value => value === CARD_NUMBERS.ACE);
   const notHandsInAces = handsValue.filter(value => value !== CARD_NUMBERS.ACE);
